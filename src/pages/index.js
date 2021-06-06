@@ -32,6 +32,9 @@ const IndexPage = () => (
       alt="A Gatsby astronaut"
       style={{ marginBottom: `1.45rem` }}
     />
+    <div id="audioDiv">
+      <audio src="https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptitle=Anime+wow+sound+effect&filename=24/248305-8e320de9-d9a1-48ca-b119-b1bcc1c09e00.mp3" type="audio/mp3" controls="controls" autoPlay>Audio could not be loaded.</audio>
+    </div>
     <p>
       {/* <Link to="/page-2/">Go to page 2</Link> <br />
       <Link to="/using-typescript/">Go to "Using TypeScript"</Link> */}
