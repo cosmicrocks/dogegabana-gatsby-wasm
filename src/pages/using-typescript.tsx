@@ -5,6 +5,13 @@ import { PageProps, Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+import loadable from "@loadable/component"
+import { IWASMModule } from "../types/WASM"
+
+const WASMModule = loadable.lib(
+ () => import("" + "../wasm/pkg/wasm") as Promise<IWASMModule>
+)
+
 type DataProps = {
   site: {
     buildTime: string
@@ -36,6 +43,12 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({ data, path }) => (
       .
     </p>
     <Link to="/">Go back to the homepage</Link>
+
+
+    <WASMModule>
+      {({ greet }) => <button onClick={() => greet("ruuuuust")}>press me</button>}
+    </WASMModule>
+
   </Layout>
 )
 
