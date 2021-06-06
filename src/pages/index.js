@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { getUser, isLoggedIn } from "../services/auth"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
@@ -8,12 +9,24 @@ import Seo from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
+    <h1>Hello {isLoggedIn() ? getUser().name : "world"}!</h1>
+    <p>
+      {isLoggedIn() ? (
+        <>
+          You are logged in, so check your{" "}
+          <Link to="/app/profile">profile</Link>
+        </>
+      ) : (
+        <>
+          You should <Link to="/app/login">log in</Link> to see restricted
+            content
+          </>
+      )}
+    </p>
+    <h1>Doge&Gabana</h1>
     <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
+      src="../images/dogegabana.png"
+      //width={300}
       quality={95}
       formats={["AUTO", "WEBP", "AVIF"]}
       alt="A Gatsby astronaut"
